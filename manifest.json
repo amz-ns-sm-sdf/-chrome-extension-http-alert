@@ -1,18 +1,15 @@
 {
     "manifest_version": 3,
-    "name": "HTTP Warning Extension",
+    "name": "NetSuite Production Login Alert",
     "version": "1.0",
-    "description": "Warns you if the site is HTTP and ignores HTTPS sites.",
-    "permissions": [
-      "tabs",
-      "notifications"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "icons": {
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
+    "description": "Shows an alert when logging into a NetSuite production account.",
+    "permissions": ["tabs", "storage"],
+    "host_permissions": ["*://*.netsuite.com/*"],
+    "content_scripts": [
+      {
+        "matches": ["*://*.netsuite.com/app/*"],
+        "js": ["content.js"]
+      }
+    ]
   }
   
