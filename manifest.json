@@ -1,15 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "NetSuite Production Login Alert",
-    "version": "1.0",
-    "description": "Shows an alert when logging into a NetSuite production account.",
-    "permissions": ["tabs", "storage"],
-    "host_permissions": ["*://*.netsuite.com/*"],
-    "content_scripts": [
-      {
-        "matches": ["*://*.netsuite.com/app/*"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+  "manifest_version": 3,
+  "name": "NetSuite Production Banner",
+  "version": "1.0.0",
+  "description": "Shows a non-intrusive scrolling banner when using a NetSuite production account.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.netsuite.com/*",
+        "https://*.netsuite.com.au/*",
+        "https://*.netsuite.eu/*",
+        "https://*.netsuite.co.uk/*"
+      ],
+      "js": ["content.js"],
+      "css": ["banner.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
